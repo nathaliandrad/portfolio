@@ -189,8 +189,10 @@
     .scroll-hint {
       position: absolute;
       bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
+      left: 0;
+      right: 0;
+      width: fit-content;
+      margin: 0 auto;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -815,7 +817,7 @@
           </div>
         </div>
         <span class="card-cta">Steam ↗</span>
-        <a href="https://store.steampowered.com/app/784400/KartKraft/" target="_blank" rel="noopener noreferrer" class="card-link" aria-label="KartKraft on Steam"></a>
+        <a href="https://store.steampowered.com/app/406350/KartKraft/" target="_blank" rel="noopener noreferrer" class="card-link" aria-label="KartKraft on Steam"></a>
       </div>
 
     </div>
@@ -905,11 +907,14 @@
       });
     });
 
-    // Page transition — fade in on load
+    // Page transition — fade in on load + handle bfcache restore
     const veil = document.getElementById('page-veil');
     requestAnimationFrame(() => requestAnimationFrame(() => {
       veil.style.opacity = '0';
     }));
+    window.addEventListener('pageshow', e => {
+      if (e.persisted) { veil.style.transition = 'none'; veil.style.opacity = '0'; veil.style.pointerEvents = 'none'; }
+    });
     // Fade out before navigating away (skip hash links, mailto, and new-tab links)
     document.querySelectorAll('a[href]').forEach(link => {
       const href = link.getAttribute('href');

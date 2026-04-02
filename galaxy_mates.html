@@ -148,6 +148,9 @@
   <script>
     const veil = document.getElementById('page-veil');
     requestAnimationFrame(() => requestAnimationFrame(() => { veil.style.opacity = '0'; }));
+    window.addEventListener('pageshow', e => {
+      if (e.persisted) { veil.style.transition = 'none'; veil.style.opacity = '0'; veil.style.pointerEvents = 'none'; }
+    });
     document.querySelectorAll('a[href]').forEach(link => {
       const href = link.getAttribute('href');
       if (!href || href.startsWith('#') || href.startsWith('mailto:') || link.target === '_blank') return;
