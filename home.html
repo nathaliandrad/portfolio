@@ -370,6 +370,57 @@
     }
     .no-link { pointer-events: none; }
 
+    /* ── EXPERIENCE ─────────────────────────────────── */
+    #experience {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+    }
+    .experience-inner { max-width: 1200px; margin: 0 auto; }
+    .exp-list { display: flex; flex-direction: column; }
+    .exp-item {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 56px;
+      padding: 48px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .exp-item:first-child { border-top: 1px solid var(--border); }
+    .exp-meta { display: flex; flex-direction: column; gap: 8px; padding-top: 2px; }
+    .exp-company {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+      text-decoration: none;
+    }
+    a.exp-company:hover { color: var(--accent); }
+    .exp-period { font-size: 12px; color: var(--muted); letter-spacing: 1px; }
+    .exp-role {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .exp-games {
+      font-size: 14px;
+      color: rgba(240,240,240,0.5);
+      margin-bottom: 18px;
+      font-weight: 500;
+    }
+    .exp-cancelled { font-size: 12px; color: var(--muted); font-style: italic; font-weight: 400; }
+    .exp-points { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .exp-points li {
+      font-size: 14px;
+      color: rgba(240,240,240,0.55);
+      line-height: 1.75;
+      padding-left: 20px;
+      position: relative;
+    }
+    .exp-points li::before { content: '—'; position: absolute; left: 0; color: var(--accent); }
+
     /* ── SKILLS ──────────────────────────────────────── */
     #skills {
       background: var(--surface);
@@ -554,6 +605,7 @@
       .projects-row-bottom { grid-template-columns: 1fr; }
       .projects-row-top .project-card,
       .projects-row-bottom .project-card { aspect-ratio: 4/3; }
+      .exp-item { grid-template-columns: 1fr; gap: 16px; padding: 36px 0; }
       .skills-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
       .contact-links { flex-direction: column; align-items: center; }
       .contact-link { width: 100%; max-width: 280px; justify-content: center; }
@@ -668,6 +720,7 @@
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#work">Work</a></li>
+      <li><a href="#experience">Experience</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -679,6 +732,7 @@
   <div class="mobile-nav" id="mobileNav">
     <a href="#about" class="mobile-nav-link">About</a>
     <a href="#work" class="mobile-nav-link">Work</a>
+    <a href="#experience" class="mobile-nav-link">Experience</a>
     <a href="#skills" class="mobile-nav-link">Skills</a>
     <a href="#contact" class="mobile-nav-link">Contact</a>
   </div>
@@ -692,7 +746,7 @@
     <div class="hero-content">
       <span class="hero-eyebrow">Software Engineer &nbsp;·&nbsp; Game Developer</span>
       <h1 class="hero-name">Nathalia<br>Andrade</h1>
-      <p class="hero-sub">Building games for fun — and for a living.</p>
+      <p class="hero-sub">Building games for fun; and for a living.</p>
       <div class="hero-actions">
         <a href="#work" class="btn btn-accent">View Work</a>
         <a href="#contact" class="btn btn-outline">Get in Touch</a>
@@ -820,6 +874,62 @@
         <a href="https://store.steampowered.com/app/406350/KartKraft/" target="_blank" rel="noopener noreferrer" class="card-link" aria-label="KartKraft on Steam"></a>
       </div>
 
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="experience-inner">
+      <p class="section-label">Career</p>
+      <h2 class="section-heading reveal">Games Industry</h2>
+      <div class="exp-list">
+
+        <!-- PlaySide Studios -->
+        <div class="exp-item reveal">
+          <div class="exp-meta">
+            <a href="https://www.playsidestudios.com" target="_blank" rel="noopener noreferrer" class="exp-company">PlaySide Studios ↗</a>
+          </div>
+          <div class="exp-body">
+            <p class="exp-role">Software Engineer</p>
+            <p class="exp-games">Game of Thrones: War For Westeros &nbsp;·&nbsp; MOUSE: PI For Hire</p>
+            <ul class="exp-points">
+              <li>Core gameplay systems for an RTS in Unreal Engine 5 with C++, covering unit behaviour, game states, and core loop mechanics</li>
+              <li>UI work and bug fixing on MOUSE: PI For Hire</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Big Ant Studios -->
+        <div class="exp-item reveal">
+          <div class="exp-meta">
+            <a href="https://bigant.com" target="_blank" rel="noopener noreferrer" class="exp-company">Big Ant Studios ↗</a>
+          </div>
+          <div class="exp-body">
+            <p class="exp-role">Junior Programmer</p>
+            <p class="exp-games">Rugby 25 &nbsp;·&nbsp; TIEBREAK</p>
+            <ul class="exp-points">
+              <li>Audio programming on Rugby 25, implementing the commentary system driving in-game voice lines</li>
+              <li>Gameplay sounds for TIEBREAK: crowd reactions, ball impact audio, and ambient event sounds</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Motorsport Games -->
+        <div class="exp-item reveal">
+          <div class="exp-meta">
+            <a href="https://motorsportgames.com" target="_blank" rel="noopener noreferrer" class="exp-company">Motorsport Games ↗</a>
+          </div>
+          <div class="exp-body">
+            <p class="exp-role">Junior Programmer</p>
+            <p class="exp-games">KartKraft &nbsp;·&nbsp; IndyCar <span class="exp-cancelled">(cancelled)</span></p>
+            <ul class="exp-points">
+              <li>Gameplay scripting in Unreal Engine 4 and Lua, covering race states, HUD, race conditions, and results flow</li>
+              <li>Frontend and UI work; also contributed to IndyCar before the project was cancelled</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
