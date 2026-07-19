@@ -85,10 +85,28 @@
     @media (max-width: 480px) {
       .specs-grid { grid-template-columns: 1fr; }
     }
+    @media (hover: hover) {
+      * { cursor: none !important; }
+      #cursor-dot {
+        width: 6px; height: 6px; background: #607dfc; border-radius: 50%;
+        position: fixed; pointer-events: none; z-index: 9999;
+        transform: translate(-50%, -50%); transition: opacity 0.3s;
+      }
+      #cursor-ring {
+        width: 28px; height: 28px; border: 1px solid rgba(96,125,252,0.4);
+        border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998;
+        transform: translate(-50%, -50%);
+        transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, opacity 0.3s, left 0.08s linear, top 0.08s linear;
+      }
+      body.cursor-hover #cursor-ring { width: 44px; height: 44px; border-color: rgba(96,125,252,0.75); }
+    }
+    @media (hover: none) { #cursor-dot, #cursor-ring { display: none; } }
   </style>
 </head>
 <body>
   <div id="page-veil" style="position:fixed;inset:0;background:#080808;z-index:10000;pointer-events:none;opacity:1;transition:opacity 0.4s ease;"></div>
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
   <nav>
     <a href="home.html" class="nav-logo">Nathalia<span>.</span></a>
     <a href="personal.html" class="nav-back">← Personal Projects</a>
@@ -161,6 +179,21 @@
         setTimeout(() => { window.location.href = href; }, 380);
       });
     });
+    if (window.matchMedia('(hover: hover)').matches) {
+      const dot = document.getElementById('cursor-dot');
+      const ring = document.getElementById('cursor-ring');
+      document.addEventListener('mousemove', e => {
+        const x = e.clientX + 'px', y = e.clientY + 'px';
+        dot.style.left = x; dot.style.top = y;
+        ring.style.left = x; ring.style.top = y;
+      }, { passive: true });
+      document.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+      });
+      document.addEventListener('mouseleave', () => { dot.style.opacity = '0'; ring.style.opacity = '0'; });
+      document.addEventListener('mouseenter', () => { dot.style.opacity = '1'; ring.style.opacity = '1'; });
+    }
   </script>
 </body>
 </html>
